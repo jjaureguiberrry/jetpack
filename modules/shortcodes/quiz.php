@@ -79,7 +79,7 @@ class Quiz_Shortcode {
 	 */
 	private static function enqueue_scripts() {
 		wp_enqueue_style( 'quiz', plugins_url( 'css/quiz.css', __FILE__ ) );
-		wp_enqueue_script( 'quiz', plugins_url( 'js/quiz.js', __FILE__ ), array( 'jquery' ), null, true );
+		wp_enqueue_script( 'quiz', plugins_url( '_inc/build/shortcodes/js/quiz.min.js', JETPACK__PLUGIN_FILE ), array( 'jquery' ), null, true );
 	}
 
 	/**

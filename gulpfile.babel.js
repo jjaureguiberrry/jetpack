@@ -78,8 +78,27 @@ function onBuild( done ) {
 
 		const is_prod = 'production' === process.env.NODE_ENV;
 
-		// Uglify other JS in _inc directory
-		gulp.src( [ '_inc/*.js', '!_inc/*.min.js' ] )
+		const supportedModules = [
+			'shortcodes'
+		];
+
+		// Source any JS for whitelisted modules
+		// modules/(shortcodes|widgets)/**/*.js
+		// This will minimize us shipping much more JS that we haven't pointed to in PHP yet.
+		const supportedModulesSource = `modules/@(${supportedModules.join( '|' ) })/**/*.js`;
+
+		// Uglify other JS from _inc and supported modules
+		const sources = [
+			'_inc/*.js',
+			supportedModulesSource
+		];
+
+		// Don't process minified JS in _inc or modules directories
+		const sourceNegations = [
+			'!_inc/*.min.js',
+			'!modules/**/*.min.js'
+		];
+		gulp.src( Array.concat( sources, sourceNegations ) )
 			.pipe( gulpif( ! is_prod, sourcemaps.init() ) )
 			.pipe( uglify() )
 			.pipe( banner( '/* Do not modify this file directly. It is compiled from other files. */\n' ) )

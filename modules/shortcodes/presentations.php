@@ -119,8 +119,20 @@ class Presentations {
 		wp_enqueue_style( 'presentations', $plugin . 'css/style.css' );
 		// Add JavaScript
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jmpress', $plugin . 'js/jmpress.min.js', array( 'jquery' ), '0.4.5', true );
-		wp_enqueue_script( 'presentations', $plugin . 'js/main.js', array( 'jquery', 'jmpress' ), false, true );
+		wp_enqueue_script(
+			'jmpress',
+			plugins_url( '_inc/build/shortcodes/js/jmpress.min.js', JETPACK__PLUGIN_FILE ),
+			array( 'jquery' ),
+			'0.4.5',
+			true
+		);
+		wp_enqueue_script(
+			'presentations',
+			plugins_url( '_inc/build/shortcodes/js/main.min.js', JETPACK__PLUGIN_FILE ),
+			array( 'jquery', 'jmpress' ),
+			false,
+			true
+		);
 	}
 
 	function presentation_shortcode( $atts, $content = '' ) {

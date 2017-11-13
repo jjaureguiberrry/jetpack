@@ -229,7 +229,7 @@ class Jetpack_Brightcove_Shortcode {
 		}
 
 		if ( $html5 ) {
-			wp_enqueue_script( 'brightcove-loader', plugins_url( 'js/brightcove.js', __FILE__ ), array( 'jquery' ), 20121127, false );
+			wp_enqueue_script( 'brightcove-loader', plugins_url( '_inc/build/shortcodes/js/brightcove.min.js', JETPACK__PLUGIN_FILE ), array( 'jquery' ), 20121127, false );
 			wp_localize_script( 'brightcove-loader', 'brightcoveData', array(
 				'tld' => esc_js( $js_tld )
 			) );
