@@ -29,7 +29,7 @@ import {
 import QuerySitePlugins from 'components/data/query-site-plugins';
 
 class PlanBody extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		plan: React.PropTypes.string
 	};
 

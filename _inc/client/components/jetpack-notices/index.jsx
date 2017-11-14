@@ -20,7 +20,7 @@ import JetpackBanner from 'components/jetpack-banner';
 import { JETPACK_CONTACT_BETA_SUPPORT } from 'constants/urls';
 
 export class DevVersionNotice extends React.Component {
-    static displayName = 'DevVersionNotice';
+	static displayName = 'DevVersionNotice';
 
 	render() {
 		if ( this.props.isDevVersion && ! this.props.userIsSubscriber ) {
@@ -48,7 +48,7 @@ DevVersionNotice.propTypes = {
 };
 
 export class StagingSiteNotice extends React.Component {
-    static displayName = 'StagingSiteNotice';
+	static displayName = 'StagingSiteNotice';
 
 	render() {
 		if ( this.props.isStaging && ! this.props.isInIdentityCrisis ) {
@@ -80,7 +80,7 @@ StagingSiteNotice.propTypes = {
 };
 
 export class DevModeNotice extends React.Component {
-    static displayName = 'DevModeNotice';
+	static displayName = 'DevModeNotice';
 
 	render() {
 		if ( this.props.siteConnectionStatus === 'dev' ) {
@@ -152,7 +152,7 @@ DevModeNotice.propTypes = {
 };
 
 export class UserUnlinked extends React.Component {
-    static displayName = 'UserUnlinked';
+	static displayName = 'UserUnlinked';
 
 	render() {
 		if (
@@ -182,7 +182,7 @@ UserUnlinked.propTypes = {
 };
 
 class JetpackNotices extends React.Component {
-    static displayName = 'JetpackNotices';
+	static displayName = 'JetpackNotices';
 
 	render() {
 		return (

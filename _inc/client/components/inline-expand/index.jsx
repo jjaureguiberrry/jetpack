@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import onKeyDownCallback from 'utils/onkeydown-callback';
 
 export class InlineExpand extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		label: React.PropTypes.string.isRequired,
 		icon: React.PropTypes.string,
 		cardKey: React.PropTypes.string,

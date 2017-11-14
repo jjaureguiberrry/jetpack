@@ -23,7 +23,7 @@ import {
 import { getSiteRawUrl } from 'state/initial-state';
 
 export class JetpackDisconnectDialog extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		show: React.PropTypes.bool,
 		toggleModal: React.PropTypes.func,
 		disconnectSite: React.PropTypes.func

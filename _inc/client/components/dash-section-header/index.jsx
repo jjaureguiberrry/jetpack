@@ -8,7 +8,7 @@ import { translate as __ } from 'i18n-calypso';
 import analytics from 'lib/analytics';
 
 export class DashSectionHeader extends React.Component {
-    static displayName = 'DashSectionHeader';
+	static displayName = 'DashSectionHeader';
 
 	static propTypes = {
 		label: React.PropTypes.string.isRequired,

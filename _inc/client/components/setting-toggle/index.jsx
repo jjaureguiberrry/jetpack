@@ -9,7 +9,7 @@ import React from 'react';
 import CompactFormToggle from 'components/form/form-toggle/compact';
 
 export class SettingToggle extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		toggleSetting: React.PropTypes.func,
 		activated: React.PropTypes.bool,
 		disabled: React.PropTypes.bool,

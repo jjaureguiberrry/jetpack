@@ -17,7 +17,7 @@ import {
 import { SettingToggle } from 'components/setting-toggle';
 
 export class Settings extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		slug: React.PropTypes.string,
 		activated: React.PropTypes.bool,
 		toggleSetting: React.PropTypes.func,
@@ -32,7 +32,7 @@ export class Settings extends React.Component {
 
 	render() {
 		// The snow setting requires special care since the option name has a WP filter applied.
-		let settingSlug = 'snow' === this.props.slug ? this.props.snowSlug : this.props.slug;
+		const settingSlug = 'snow' === this.props.slug ? this.props.snowSlug : this.props.slug;
 		return (
 			<div>
 				<SettingToggle
@@ -61,6 +61,6 @@ export default connect(
 			toggleSetting: ( setting_name, activated ) => {
 				dispatch( updateSetting( { [ setting_name ]: ! activated } ) );
 			}
-		}
+		};
 	}
 )( Settings );

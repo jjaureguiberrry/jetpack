@@ -39,7 +39,7 @@ import {
 } from 'state/at-a-glance';
 
 class ProStatus extends React.Component {
-    static propTypes = {
+	static propTypes = {
 		isCompact: React.PropTypes.bool,
 		proFeature: React.PropTypes.string
 	};
