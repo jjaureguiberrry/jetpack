@@ -24,45 +24,41 @@ import { getSiteRawUrl } from 'state/initial-state';
 import onKeyDownCallback from 'utils/onkeydown-callback';
 import JetpackDisconnectDialog from 'components/jetpack-disconnect-dialog';
 
-export const ConnectButton = React.createClass( {
-	displayName: 'ConnectButton',
+export class ConnectButton extends React.Component {
+    static displayName = 'ConnectButton';
 
-	propTypes: {
+	static propTypes = {
 		connectUser: React.PropTypes.bool,
 		from: React.PropTypes.string,
 		asLink: React.PropTypes.bool
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			connectUser: false,
-			from: '',
-			asLink: false
-		};
-	},
+	static defaultProps = {
+		connectUser: false,
+		from: '',
+		asLink: false
+	};
 
-	getInitialState() {
-		return {
-			showModal: false
-		};
-	},
+	state = {
+		showModal: false
+	};
 
-	handleOpenModal( e ) {
+	handleOpenModal = e => {
 		analytics.tracks.recordJetpackClick( 'manage_site_connection' );
 		e.preventDefault();
 		this.toggleVisibility();
-	},
+	};
 
-	disconnectSite() {
+	disconnectSite = () => {
 		this.toggleVisibility();
 		this.props.disconnectSite();
-	},
+	};
 
-	toggleVisibility() {
+	toggleVisibility = () => {
 		this.setState( { showModal: ! this.state.showModal } );
-	},
+	};
 
-	renderUserButton: function() {
+	renderUserButton = () => {
 		// Already linked
 		if ( this.props.isLinked ) {
 			return (
@@ -95,9 +91,9 @@ export const ConnectButton = React.createClass( {
 		return this.props.asLink
 			? <a { ...buttonProps }>{ connectLegend }</a>
 			: <Button { ...buttonProps }>{ connectLegend }</Button>;
-	},
+	};
 
-	renderContent: function() {
+	renderContent = () => {
 		if ( this.props.connectUser ) {
 			return this.renderUserButton();
 		}
@@ -130,7 +126,7 @@ export const ConnectButton = React.createClass( {
 		return this.props.asLink
 			? <a { ...buttonProps }>{ connectLegend }</a>
 			: <Button { ...buttonProps }>{ connectLegend }</Button>;
-	},
+	};
 
 	render() {
 		return (
@@ -158,7 +154,7 @@ export const ConnectButton = React.createClass( {
 			</div>
 		);
 	}
-} );
+}
 
 export default connect(
 	state => {

@@ -38,28 +38,26 @@ import {
 	isFetchingAkismetData
 } from 'state/at-a-glance';
 
-const ProStatus = React.createClass( {
-	propTypes: {
+class ProStatus extends React.Component {
+    static propTypes = {
 		isCompact: React.PropTypes.bool,
 		proFeature: React.PropTypes.string
-	},
+	};
 
-	getDefaultProps: function() {
-		return {
-			isCompact: true,
-			proFeature: ''
-		};
-	},
+	static defaultProps = {
+		isCompact: true,
+		proFeature: ''
+	};
 
-	trackProStatusClick: function( type, feature ) {
+	trackProStatusClick = ( type, feature ) => {
 		analytics.tracks.recordJetpackClick( {
 			target: 'pro-status',
 			type: type,
 			feature: feature
 		} );
-	},
+	};
 
-	getProActions( type, feature ) {
+	getProActions = ( type, feature ) => {
 		let status = '',
 			message = false,
 			action = false,
@@ -111,7 +109,7 @@ const ProStatus = React.createClass( {
 				}
 			</SimpleNotice>
 		);
-	},
+	};
 
 	/**
 	 * Return a button to Set Up a feature.
@@ -120,7 +118,7 @@ const ProStatus = React.createClass( {
 	 *
 	 * @return {component} A Button component.
 	 */
-	getSetUpButton( feature ) {
+	getSetUpButton = feature => {
 		return (
 			<Button
 				onClick={ () => this.trackProStatusClick( 'set_up', feature ) }
@@ -131,7 +129,7 @@ const ProStatus = React.createClass( {
 				{ __( 'Set up', { context: 'Caption for a button to set up a feature.' } ) }
 			</Button>
 		);
-	},
+	};
 
 	render() {
 		const sitePlan = this.props.sitePlan(),
@@ -225,7 +223,7 @@ const ProStatus = React.createClass( {
 			</div>
 		);
 	}
-} );
+}
 
 export default connect(
 	( state ) => {

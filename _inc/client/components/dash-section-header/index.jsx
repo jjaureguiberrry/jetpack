@@ -7,33 +7,31 @@ import Gridicon from 'components/gridicon';
 import { translate as __ } from 'i18n-calypso';
 import analytics from 'lib/analytics';
 
-export const DashSectionHeader = React.createClass( {
-	displayName: 'DashSectionHeader',
+export class DashSectionHeader extends React.Component {
+    static displayName = 'DashSectionHeader';
 
-	propTypes: {
+	static propTypes = {
 		label: React.PropTypes.string.isRequired,
 		settingsPath: React.PropTypes.string,
 		externalLinkPath: React.PropTypes.string,
 		externalLink: React.PropTypes.string,
 		externalLinkClick: React.PropTypes.func
-	},
+	};
 
-	getDefaultProps() {
-		return {
-			label: '',
-			settingsPath: '',
-			externalLinkPath: '',
-			externalLink: ''
-		};
-	},
+	static defaultProps = {
+		label: '',
+		settingsPath: '',
+		externalLinkPath: '',
+		externalLink: ''
+	};
 
-	trackCogClick() {
+	trackCogClick = () => {
 		analytics.tracks.recordJetpackClick( {
 			target: 'settings-cog',
 			group: 'security',
 			page: 'aag'
 		} );
-	},
+	};
 
 	render() {
 		let settingsIcon;
@@ -89,6 +87,6 @@ export const DashSectionHeader = React.createClass( {
 			</div>
 		);
 	}
-} );
+}
 
 export default DashSectionHeader;

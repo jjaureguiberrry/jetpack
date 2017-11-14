@@ -6,29 +6,27 @@ import React from 'react';
 import CompactFormToggle from 'components/form/form-toggle/compact';
 import analytics from 'lib/analytics';
 
-export const ModuleToggle = React.createClass( {
-	propTypes: {
+export class ModuleToggle extends React.Component {
+    static propTypes = {
 		toggleModule: React.PropTypes.func,
 		activated: React.PropTypes.bool,
 		disabled: React.PropTypes.bool,
 		className: React.PropTypes.string,
 		compact: React.PropTypes.bool,
 		id: React.PropTypes.string
-	},
+	};
 
-	getDefaultProps: function() {
-		return {
-			activated: false,
-			disabled: false
-		};
-	},
+	static defaultProps = {
+		activated: false,
+		disabled: false
+	};
 
-	toggleModule() {
+	toggleModule = () => {
 		this.trackModuleToggle( this.props.slug, this.props.activated  );
 		return this.props.toggleModule( this.props.slug, this.props.activated );
-	},
+	};
 
-	trackModuleToggle( slug, activated ) {
+	trackModuleToggle = (slug, activated) => {
 		// The stats check is a hack around the fact that we're using <ModuleToggle for the settings there...
 		'stats' !== slug && analytics.tracks.recordEvent(
 			'jetpack_wpa_module_toggle',
@@ -37,7 +35,7 @@ export const ModuleToggle = React.createClass( {
 				toggled: activated ? 'off' : 'on'
 			}
 		);
-	},
+	};
 
 	render() {
 		return (
@@ -51,4 +49,4 @@ export const ModuleToggle = React.createClass( {
 			</CompactFormToggle>
 		);
 	}
-} );
+}
