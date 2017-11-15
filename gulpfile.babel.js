@@ -30,6 +30,7 @@ import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 import webpack from 'webpack';
 import gulpif from 'gulp-if';
+import saveLicense from 'uglify-save-license';
 
 /**
  * Internal dependencies
@@ -100,7 +101,9 @@ function onBuild( done ) {
 		];
 		gulp.src( Array.concat( sources, sourceNegations ) )
 			.pipe( gulpif( ! is_prod, sourcemaps.init() ) )
-			.pipe( uglify() )
+			.pipe( uglify( {
+				preserveComments: saveLicense
+			} ) )
 			.pipe( banner( '/* Do not modify this file directly. It is compiled from other files. */\n' ) )
 			.pipe( rename( { suffix: '.min' } ) )
 			.pipe( gulpif( ! is_prod, sourcemaps.write( './' ) ) )
