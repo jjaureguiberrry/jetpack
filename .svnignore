@@ -31,3 +31,4 @@ _inc/build/*.js.map
 _inc/build/*.css.map
 .codeclimate.yml
 yarn.lock
+modules/shortcodes/js
