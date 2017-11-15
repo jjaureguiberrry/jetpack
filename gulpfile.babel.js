@@ -83,9 +83,9 @@ function onBuild( done ) {
 			'shortcodes'
 		];
 
-		// Source any JS for whitelisted modules
-		// modules/(shortcodes|widgets)/**/*.js
-		// This will minimize us shipping much more JS that we haven't pointed to in PHP yet.
+		// Source any JS for whitelisted modules, which will minimize us shipping much
+		// more JS that we haven't pointed to in PHP yet.
+		// Example output: modules/(shortcodes|widgets)/**/*.js
 		const supportedModulesSource = `modules/@(${supportedModules.join( '|' ) })/**/*.js`;
 
 		// Uglify other JS from _inc and supported modules
